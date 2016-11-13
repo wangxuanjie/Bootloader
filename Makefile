@@ -49,7 +49,8 @@ TARGETS	= \
 	px4fmuv4pro_bl \
 	px4io_bl \
 	px4iov3_bl \
-	tapv1_bl
+	tapv1_bl \
+	px4nucleoF767ZI-v1_default_bl
 
 all:	$(TARGETS)
 
@@ -91,6 +92,8 @@ px4aerocore_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 
 crazyflie_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	make -f Makefile.f4 TARGET_HW=CRAZYFLIE LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
+px4nucleoF767ZI-v1_default_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
+	make -f Makefile.f7 TARGET_HW=PX4_F767 LINKER_FILE=stm32f7.ld TARGET_FILE_NAME=$@
 
 # Default bootloader delay is *very* short, just long enough to catch
 # the board for recovery but not so long as to make restarting after a
